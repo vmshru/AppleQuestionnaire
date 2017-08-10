@@ -1,0 +1,77 @@
+package itunes;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class SearchApiTest {
+	
+	@Test
+	public void testSearch(){
+		//https://itunes.apple.com/search?[parameterkeyvalue]
+		
+		Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?[media=music]"));
+	}
+		@Test
+		public void testSearch1(){
+			//https://itunes.apple.com/search?[parameterkeyvalue]
+			
+			Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?[country=US&media=movie]"));
+		}
+			@Test
+			public void testSearch2(){
+				//https://itunes.apple.com/search?[parameterkeyvalue]
+				
+				Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?[country=US&media=music&limit=30]"));
+
+	
+	}
+			
+			
+	
+	public boolean callSearchAPI(String searchURLwithParam){
+		try {
+
+			URL url = new URL(searchURLwithParam);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Accept", "application/json");
+
+			
+			if (conn.getResponseCode() != 200) {
+				System.out.println("Failed : HTTP error code : "
+						+ conn.getResponseCode());
+				return false;
+			}
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+				(conn.getInputStream())));
+
+			String output;
+			System.out.println("Output from Server .... \n");
+			while ((output = br.readLine()) != null) {
+				System.out.println(output);
+			}
+
+			conn.disconnect();
+			return true;
+
+		  } catch (MalformedURLException e) {
+
+			e.printStackTrace();
+
+		  } catch (IOException e) {
+
+			e.printStackTrace();
+
+		  }
+		return false;
+	}
+
+}

@@ -1,0 +1,67 @@
+package itunes;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class StringTest {
+	@Test
+	public void testCharReplacementInOneLine(){
+		String given="Hello";
+		char tofind='l';
+		String find=String.valueOf(tofind);
+		
+		String replacedString=given.replaceAll(find, "");
+		Assert.assertFalse(replacedString.contains(find));
+	}
+	
+	
+	@Test
+	public void testCharReplacementInOneLineNegative(){
+		String given="Hello";
+		char tofind='a';
+		String find=String.valueOf(tofind);
+		
+		String replacedString=given.replaceAll(find, "");
+		Assert.assertFalse(replacedString.contains(find));
+	}
+	
+	@Test
+	public void testCharReplacementWithIteration(){
+		String given="Hello";
+		char find='l';
+		String a=replaceStringWithIteration(given, find);
+		Assert.assertFalse(a.toString().contains(String.valueOf(find)));
+
+		
+	}
+	
+	@Test
+	public void testCharReplacementWithIterationNegative(){
+		String given="Hello";
+		char find='a';
+		String a=replaceStringWithIteration(given, find);
+		Assert.assertFalse(a.toString().contains(String.valueOf(find)));
+
+		
+	}
+	
+	public String replaceStringWithIteration(String given, char find){
+		/*String given="Hello";
+		char find='l';*/
+	StringBuffer sb=new StringBuffer(given);
+	StringBuffer replaced=new StringBuffer();
+	int len=given.length();
+		for(int i=0;i<len;i++){
+			
+			char a=sb.charAt(i);
+			
+		  if(find!=a){			
+		 replaced.append(a);	
+		}
+		
+		}
+		String a=replaced.toString();
+		return a;
+	}
+
+}
