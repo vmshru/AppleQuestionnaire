@@ -32,7 +32,30 @@ public class SearchApiTest {
 
 	
 	}
-			
+			@Test
+			public void testSearch3(){
+				//https://itunes.apple.com/search?[parameterkeyvalue]
+				
+				Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?[term='neil+young'&country=CA]"));
+
+	
+	}
+			@Test
+			public void testSearch4(){
+				//https://itunes.apple.com/search?[parameterkeyvalue]
+				
+				Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?[media=shortFilm&limit=300]"));
+
+	
+	}
+			@Test
+			public void testSearch5(){
+				//https://itunes.apple.com/search?[parameterkeyvalue]
+				
+				Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?[term='shruti'&media=music]"));
+
+	
+	}
 			
 	
 	public boolean callSearchAPI(String searchURLwithParam){
