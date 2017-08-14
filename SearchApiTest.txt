@@ -16,19 +16,19 @@ public class SearchApiTest {
 	public void testSearch(){
 		//https://itunes.apple.com/search?[parameterkeyvalue]
 		
-		Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?[media=music]"));
+		Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?term='jack+johnson'&media=music"));
 	}
 		@Test
 		public void testSearch1(){
 			//https://itunes.apple.com/search?[parameterkeyvalue]
 			
-			Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?[country=US&media=movie]"));
+			Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?term='selena+gomez'&media=ebook"));
 		}
 			@Test
 			public void testSearch2(){
 				//https://itunes.apple.com/search?[parameterkeyvalue]
 				
-				Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?[country=US&media=music&limit=30]"));
+				Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?term='justin+bieber'&media=music&limit=30"));
 
 	
 	}
@@ -36,7 +36,7 @@ public class SearchApiTest {
 			public void testSearch3(){
 				//https://itunes.apple.com/search?[parameterkeyvalue]
 				
-				Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?[term='neil+young'&country=CA]"));
+				Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?term='neil+young'&country=CA"));
 
 	
 	}
@@ -44,7 +44,7 @@ public class SearchApiTest {
 			public void testSearch4(){
 				//https://itunes.apple.com/search?[parameterkeyvalue]
 				
-				Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?[media=shortFilm&limit=300]"));
+				Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?country=US&media=podcast"));
 
 	
 	}
@@ -52,12 +52,11 @@ public class SearchApiTest {
 			public void testSearch5(){
 				//https://itunes.apple.com/search?[parameterkeyvalue]
 				
-				Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?[term='shruti'&media=music]"));
+				Assert.assertTrue(callSearchAPI("https://itunes.apple.com/search?country=CA&media=music"));
 
 	
 	}
 			
-	
 	public boolean callSearchAPI(String searchURLwithParam){
 		try {
 
